@@ -158,6 +158,23 @@
 
   }
 </script>
+  <script>
+function toggleDarkMode() {
+  document.body.classList.toggle('dark-mode');
+}
+
+function filterProducts() {
+  const value = document.getElementById('modelFilter').value.toLowerCase();
+  const products = document.querySelectorAll('.product');
+
+  products.forEach(product => {
+    const title = product.querySelector('h3').textContent.toLowerCase();
+    product.style.display = value === 'all' || title.includes(value) ? 'block' : 'none';
+  });
+}
+</script>
+
+</script>
 
 </body>
 </html>

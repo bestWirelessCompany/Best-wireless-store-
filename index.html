@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Best Wireless Company</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
       font-family: Arial, sans-serif;
       background: #f4f4f4;
@@ -17,85 +20,90 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
       border-bottom: 1px solid #ccc;
     }
     header h1 {
-      margin: 0;
       font-size: 20px;
+      margin: 0;
+    }
+    nav {
+      margin-top: 10px;
     }
     nav a {
-      margin: 0 10px;
+      margin: 0 8px;
       text-decoration: none;
       font-weight: bold;
-      color: black;
+      color: #333;
+      font-size: 14px;
     }
     .container {
-      padding: 20px;
+      padding: 10px;
     }
     .product, .order-form {
       background: white;
       border-radius: 10px;
-      padding: 20px;
+      padding: 15px;
       margin-bottom: 20px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
       text-align: center;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
     .product img {
       width: 100%;
-      max-width: 300px;
+      max-width: 250px;
       height: auto;
-      border-radius: 8px;
+      border-radius: 10px;
     }
     .product h2, .order-form h2 {
+      font-size: 18px;
       margin: 10px 0;
     }
     .product p {
-      margin: 10px 0;
       font-size: 16px;
+      color: #555;
     }
     .buy-button, .whatsapp-button {
+      display: inline-block;
       background: black;
       color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
+      padding: 10px 15px;
+      border-radius: 5px;
       text-decoration: none;
-      display: inline-block;
       margin-top: 10px;
+      font-size: 14px;
     }
     form input, form select, form textarea {
       width: 100%;
       padding: 10px;
-      margin: 10px 0;
-      border-radius: 6px;
+      margin-top: 10px;
+      border-radius: 5px;
       border: 1px solid #ccc;
-      box-sizing: border-box;
     }
     form button {
       background: black;
       color: white;
-      padding: 10px 20px;
+      padding: 10px;
+      margin-top: 10px;
+      width: 100%;
       border: none;
-      border-radius: 6px;
-      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
     }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>Best Wireless Logo</h1>
+  <h1>Best Wireless</h1>
   <nav>
     <a href="#">Home</a>
-    <a href="#">Products</a>
+    <a href="#products">Products</a>
     <a href="#order">Order</a>
   </nav>
 </header>
 
-<div class="container">
+<div class="container" id="products">
 
-  <!-- Products -->
   <div class="product">
     <img src="https://cdn.openai.com/chat-plugins/files/23d86246-881d-336b-021d-4d6c71b3cf66/A_digital_photograph_displays_an_iPhone_11_standin.png" alt="iPhone 11" />
     <h2>iPhone 11</h2>
@@ -124,12 +132,10 @@
     <a class="buy-button" href="#order">Buy Now</a>
   </div>
 
-  <!-- WhatsApp Button -->
   <div class="product">
     <a class="whatsapp-button" href="https://wa.me/16144360165" target="_blank">Chat on WhatsApp for Payment</a>
   </div>
 
-  <!-- Order Form -->
   <div class="order-form" id="order">
     <h2>Place Your Order</h2>
     <form action="mailto:taiwo.samuel.123890@gmail.com" method="POST" enctype="text/plain">
@@ -142,7 +148,7 @@
         <option value="iPhone 15 Pro">iPhone 15 Pro</option>
         <option value="iPhone 16 Pro Max">iPhone 16 Pro Max</option>
       </select>
-      <textarea name="Message" rows="5" placeholder="Any message or delivery instructions"></textarea>
+      <textarea name="Message" rows="5" placeholder="Delivery instructions or questions"></textarea>
       <button type="submit">Submit Order</button>
     </form>
   </div>

@@ -1,192 +1,153 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Best Wireless Company</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
     body {
+      font-family: Arial, sans-serif;
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f9f9f9;
+      padding: 0;
+      background: #f7f7f7;
     }
     header {
       background: black;
       color: white;
-      padding: 20px;
+      padding: 1rem;
       text-align: center;
     }
-    header h1 {
-      margin: 0;
-      color: #e60000;
-    }
-    .currency-switcher, .filter-bar {
+    .controls {
       display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin: 20px;
-    }
-    .product-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 10px;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 1rem;
     }
     .product {
       background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      width: 250px;
+      border-radius: 12px;
+      padding: 1rem;
+      margin: 1rem auto;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       text-align: center;
-      padding: 15px;
     }
     .product img {
       max-width: 100%;
-      border-radius: 10px;
+      height: auto;
+      border-radius: 8px;
+    }
+    .product h3 {
+      margin: 10px 0 5px;
     }
     .product button {
-      background: #e60000;
+      background: red;
       color: white;
-      padding: 10px;
-      margin-top: 10px;
       border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    section {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 20px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    h2 {
-      color: #e60000;
-    }
-    form input, form textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-    }
-    form button {
-      background: #e60000;
-      color: white;
       padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
+      font-weight: bold;
+      border-radius: 8px;
+      margin-top: 10px;
     }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #222;
-      color: white;
+    form {
+      display: none;
+      padding: 1rem;
+      background: #fff;
+      margin: 1rem;
+      border-radius: 8px;
     }
   </style>
 </head>
 <body>
+
 <header>
-  <h1>Best Wireless Company</h1>
-  <p>Affordable iPhones. Trusted Service. Global Delivery.</p>
+  <h1>Affordable iPhones. Trusted Service. Global Delivery.</h1>
 </header>
 
-<div class="currency-switcher">
-  <label><input type="radio" name="currency" value="USD" checked> USD</label>
-  <label><input type="radio" name="currency" value="INR"> INR</label>
-</div>
-
-<div class="filter-bar">
-  <select id="modelFilter" onchange="filterProducts()">
+<div class="controls">
+  <label><input type="radio" name="currency" value="USD" /> USD</label>
+  <label><input type="radio" name="currency" value="INR" checked /> INR</label>
+  <select id="modelFilter">
     <option value="all">All Models</option>
-    <option value="11">iPhone 11</option>
-    <option value="12">iPhone 12</option>
-    <option value="13">iPhone 13</option>
-    <option value="14">iPhone 14</option>
-    <option value="15">iPhone 15</option>
-    <option value="16">iPhone 16</option>
+    <option value="iPhone 11">iPhone 11</option>
+    <option value="iPhone 12">iPhone 12</option>
+    <option value="iPhone 13">iPhone 13</option>
+    <option value="iPhone 14">iPhone 14</option>
   </select>
 </div>
 
-<div class="product-grid" id="productGrid">
-  <!-- Products will be injected here -->
+<div class="products">
+  <div class="product" data-model="iPhone 11">
+    <img src="images/iphone11.png" alt="iPhone 11" />
+    <h3>iPhone 11</h3>
+    <p class="price" data-usd="299" data-inr="24817">₹24817</p>
+    <button onclick="openForm('iPhone 11')">Buy Now</button>
+  </div>
+
+  <div class="product" data-model="iPhone 12">
+    <img src="images/iphone12.png" alt="iPhone 12" />
+    <h3>iPhone 12</h3>
+    <p class="price" data-usd="399" data-inr="33117">₹33117</p>
+    <button onclick="openForm('iPhone 12')">Buy Now</button>
+  </div>
+
+  <div class="product" data-model="iPhone 13">
+    <img src="images/iphone13.png" alt="iPhone 13" />
+    <h3>iPhone 13</h3>
+    <p class="price" data-usd="499" data-inr="41417">₹41417</p>
+    <button onclick="openForm('iPhone 13')">Buy Now</button>
+  </div>
+
+  <div class="product" data-model="iPhone 14">
+    <img src="images/iphone14.png" alt="iPhone 14" />
+    <h3>iPhone 14</h3>
+    <p class="price" data-usd="599" data-inr="49717">₹49717</p>
+    <button onclick="openForm('iPhone 14')">Buy Now</button>
+  </div>
 </div>
 
-<section>
-  <h2>Order Form</h2>
-  <form onsubmit="handleSubmit(event)">
-    <input type="text" placeholder="Your Name" required />
-    <input type="text" placeholder="Your Address" required />
-    <input type="tel" placeholder="Your Phone" required />
-    <textarea placeholder="Order Details" required></textarea>
-    <button type="submit">Submit Order</button>
-  </form>
-</section>
-
-<section>
-  <h2>Testimonials</h2>
-  <p>"Fast delivery and good prices!" – Priya from Delhi</p>
-  <p>"Customer support was excellent. Highly recommend!" – James from New York</p>
-</section>
-
-<section>
-  <h2>FAQs</h2>
-  <p><strong>Q:</strong> Do you ship internationally?<br/><strong>A:</strong> Yes, we deliver worldwide.</p>
-  <p><strong>Q:</strong> How do I pay?<br/><strong>A:</strong> After submitting your order, you will be contacted on WhatsApp for account details.</p>
-</section>
-
-<footer>
-  Contact us on WhatsApp: +1 614 436 0165
-</footer>
+<form id="orderForm" action="https://formsubmit.co/taiwo.samuel.123890@gmail.com" method="POST">
+  <h3>Order iPhone</h3>
+  <input type="hidden" name="_next" value="thankyou.html" />
+  <input type="text" name="name" placeholder="Your Name" required /><br /><br />
+  <input type="email" name="email" placeholder="Your Email" required /><br /><br />
+  <input type="text" name="address" placeholder="Delivery Address" required /><br /><br />
+  <input type="text" name="model" id="modelInput" readonly /><br /><br />
+  <button type="submit">Confirm Order</button>
+  <p>After submitting, pay via WhatsApp: <a href="https://wa.me/16144360165" target="_blank">+1 614 436 0165</a></p>
+</form>
 
 <script>
-  const products = [
-    { model: "11", name: "iPhone 11", priceUSD: 299, img: "https://raw.githubusercontent.com/taiwo-samuel/bestwireless/main/iphone11.png" },
-    { model: "12", name: "iPhone 12", priceUSD: 399, img: "https://raw.githubusercontent.com/taiwo-samuel/bestwireless/main/iphone12.png" },
-    { model: "13", name: "iPhone 13", priceUSD: 499, img: "https://raw.githubusercontent.com/taiwo-samuel/bestwireless/main/iphone13.png" },
-    { model: "16", name: "iPhone 16 Pro Max", priceUSD: 1099, img: "https://raw.githubusercontent.com/taiwo-samuel/bestwireless/main/iphone16.png" },
-  ];
-
-  const exchangeRate = 83;
-
-  function renderProducts() {
-    const currency = document.querySelector('input[name="currency"]:checked').value;
-    const filter = document.getElementById("modelFilter").value;
-    const container = document.getElementById("productGrid");
-    container.innerHTML = "";
-
-    products
-      .filter(p => filter === "all" || p.model === filter)
-      .forEach(p => {
-        const price = currency === "USD" ? `$${p.priceUSD}` : `₹${p.priceUSD * exchangeRate}`;
-        container.innerHTML += `
-          <div class="product">
-            <img src="${p.img}" alt="${p.name}">
-            <h3>${p.name}</h3>
-            <p>${price}</p>
-            <button onclick="startOrder('${p.name}', '${price}')">Buy Now</button>
-          </div>
-        `;
+  const radios = document.querySelectorAll('input[name="currency"]');
+  const prices = document.querySelectorAll('.price');
+  radios.forEach(radio => {
+    radio.addEventListener('change', () => {
+      const currency = radio.value;
+      prices.forEach(price => {
+        price.textContent = currency === 'USD'
+          ? `$${price.dataset.usd}`
+          : `₹${price.dataset.inr}`;
       });
+    });
+  });
+
+  document.getElementById('modelFilter').addEventListener('change', function () {
+    const selected = this.value;
+    document.querySelectorAll('.product').forEach(card => {
+      card.style.display = (selected === 'all' || card.dataset.model === selected)
+        ? 'block' : 'none';
+    });
+  });
+
+  function openForm(model) {
+    document.getElementById('orderForm').style.display = 'block';
+    document.getElementById('modelInput').value = model;
+    window.scrollTo(0, document.body.scrollHeight);
   }
-
-  function startOrder(model, price) {
-    const form = document.querySelector("form textarea");
-    form.value = `I want to order: ${model} - ${price}`;
-    window.scrollTo({ top: document.querySelector("form").offsetTop, behavior: "smooth" });
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    alert("Your order is being submitted. You will now be redirected.");
-    window.location.href = "thankyou.html";
-  }
-
-  document.querySelectorAll('input[name="currency"]').forEach(el => el.addEventListener("change", renderProducts));
-  window.filterProducts = renderProducts;
-
-  renderProducts();
 </script>
+
 </body>
 </html>

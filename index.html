@@ -1,65 +1,153 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Best Wireless Company</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Best Wireless Company</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ccc;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 20px;
+    }
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+      color: black;
+    }
+    .container {
+      padding: 20px;
+    }
+    .product, .order-form {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .product img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      border-radius: 8px;
+    }
+    .product h2, .order-form h2 {
+      margin: 10px 0;
+    }
+    .product p {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+    .buy-button, .whatsapp-button {
+      background: black;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+    }
+    form input, form select, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    form button {
+      background: black;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <img src="logo.png" alt="Best Wireless Logo" class="logo">
-        <nav>
-            <a href="#">Home</a>
-            <a href="#products">Products</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
 
-    <section id="products" class="store">
-        <div class="item">
-            <img src="iphone11.png" alt="iPhone 11">
-            <h3>iPhone 11</h3>
-            <p class="price">INR 45,000 / USD 540</p>
-            <button onclick="selectProduct('iPhone 11')">Buy Now</button>
-        </div>
-        <div class="item">
-            <img src="iphone13.png" alt="iPhone 13">
-            <h3>iPhone 13</h3>
-            <p class="price">INR 55,000 / USD 660</p>
-            <button onclick="selectProduct('iPhone 13')">Buy Now</button>
-        </div>
-        <div class="item">
-            <img src="iphone15pro.png" alt="iPhone 15 Pro">
-            <h3>iPhone 15 Pro</h3>
-            <p class="price">INR 115,000 / USD 1390</p>
-            <button onclick="selectProduct('iPhone 15 Pro')">Buy Now</button>
-        </div>
-        <div class="item">
-            <img src="iphone16promax.png" alt="iPhone 16 Pro Max">
-            <h3>iPhone 16 Pro Max</h3>
-            <p class="price">INR 145,000 / USD 1749</p>
-            <button onclick="selectProduct('iPhone 16 Pro Max')">Buy Now</button>
-        </div>
-    </section>
+<header>
+  <h1>Best Wireless Logo</h1>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Products</a>
+    <a href="#order">Order</a>
+  </nav>
+</header>
 
-    <form id="orderForm" style="display: none;">
-        <h2>Shipping Details</h2>
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="text" name="address" placeholder="Shipping Address" required>
-        <input type="text" name="phone" placeholder="Phone Number" required>
-        <input type="hidden" name="product" id="selectedProduct">
-        <button type="submit">Submit</button>
+<div class="container">
+
+  <!-- Products -->
+  <div class="product">
+    <img src="https://cdn.openai.com/chat-plugins/files/23d86246-881d-336b-021d-4d6c71b3cf66/A_digital_photograph_displays_an_iPhone_11_standin.png" alt="iPhone 11" />
+    <h2>iPhone 11</h2>
+    <p>INR 45,000 / USD 540</p>
+    <a class="buy-button" href="#order">Buy Now</a>
+  </div>
+
+  <div class="product">
+    <img src="https://cdn.openai.com/chat-plugins/files/5ef9d79c-b859-4e7d-b23f-dbf92787b735/A_digital_photograph_displays_an_iPhone_13_on_a_wo.png" alt="iPhone 13" />
+    <h2>iPhone 13</h2>
+    <p>INR 55,000 / USD 660</p>
+    <a class="buy-button" href="#order">Buy Now</a>
+  </div>
+
+  <div class="product">
+    <img src="https://cdn.openai.com/chat-plugins/files/c2cfe6d1-2e2d-4c4f-a1df-1bc8f5393fd7/A_digital_photograph_displays_an_iPhone_15_Pro_on.png" alt="iPhone 15 Pro" />
+    <h2>iPhone 15 Pro</h2>
+    <p>INR 115,000 / USD 1390</p>
+    <a class="buy-button" href="#order">Buy Now</a>
+  </div>
+
+  <div class="product">
+    <img src="https://cdn.openai.com/chat-plugins/files/28b461f4-b580-ea01-814f-80e6df289cdc/A_grid_of_four_digital_product_images_on_a_white_b.png" alt="iPhone 16 Pro Max" />
+    <h2>iPhone 16 Pro Max</h2>
+    <p>INR 125,000 / USD 1490</p>
+    <a class="buy-button" href="#order">Buy Now</a>
+  </div>
+
+  <!-- WhatsApp Button -->
+  <div class="product">
+    <a class="whatsapp-button" href="https://wa.me/16144360165" target="_blank">Chat on WhatsApp for Payment</a>
+  </div>
+
+  <!-- Order Form -->
+  <div class="order-form" id="order">
+    <h2>Place Your Order</h2>
+    <form action="mailto:taiwo.samuel.123890@gmail.com" method="POST" enctype="text/plain">
+      <input type="text" name="Name" placeholder="Your Name" required />
+      <input type="email" name="Email" placeholder="Your Email" required />
+      <select name="iPhone Model" required>
+        <option value="">Select iPhone Model</option>
+        <option value="iPhone 11">iPhone 11</option>
+        <option value="iPhone 13">iPhone 13</option>
+        <option value="iPhone 15 Pro">iPhone 15 Pro</option>
+        <option value="iPhone 16 Pro Max">iPhone 16 Pro Max</option>
+      </select>
+      <textarea name="Message" rows="5" placeholder="Any message or delivery instructions"></textarea>
+      <button type="submit">Submit Order</button>
     </form>
+  </div>
 
-    <div id="confirmation" style="display: none;">
-        <h2>Thanks for your order!</h2>
-        <p>Please message us on WhatsApp for payment details: <a href="https://wa.me/16144360164">+1 614 436 0164</a></p>
-    </div>
+</div>
 
-    <a href="https://wa.me/16144360165" class="whatsapp-float" target="_blank">💬</a>
-
-    <script src="script.js"></script>
 </body>
 </html>

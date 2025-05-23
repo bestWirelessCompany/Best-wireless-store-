@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Wireless Company</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Best Wireless Logo" class="logo">
+        <nav>
+            <a href="#">Home</a>
+            <a href="#products">Products</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section id="products" class="store">
+        <div class="item">
+            <img src="iphone11.png" alt="iPhone 11">
+            <h3>iPhone 11</h3>
+            <p class="price">INR 45,000 / USD 540</p>
+            <button onclick="selectProduct('iPhone 11')">Buy Now</button>
+        </div>
+        <div class="item">
+            <img src="iphone13.png" alt="iPhone 13">
+            <h3>iPhone 13</h3>
+            <p class="price">INR 55,000 / USD 660</p>
+            <button onclick="selectProduct('iPhone 13')">Buy Now</button>
+        </div>
+        <div class="item">
+            <img src="iphone15pro.png" alt="iPhone 15 Pro">
+            <h3>iPhone 15 Pro</h3>
+            <p class="price">INR 115,000 / USD 1390</p>
+            <button onclick="selectProduct('iPhone 15 Pro')">Buy Now</button>
+        </div>
+        <div class="item">
+            <img src="iphone16promax.png" alt="iPhone 16 Pro Max">
+            <h3>iPhone 16 Pro Max</h3>
+            <p class="price">INR 145,000 / USD 1749</p>
+            <button onclick="selectProduct('iPhone 16 Pro Max')">Buy Now</button>
+        </div>
+    </section>
+
+    <form id="orderForm" style="display: none;">
+        <h2>Shipping Details</h2>
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="text" name="address" placeholder="Shipping Address" required>
+        <input type="text" name="phone" placeholder="Phone Number" required>
+        <input type="hidden" name="product" id="selectedProduct">
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="confirmation" style="display: none;">
+        <h2>Thanks for your order!</h2>
+        <p>Please message us on WhatsApp for payment details: <a href="https://wa.me/16144360164">+1 614 436 0164</a></p>
+    </div>
+
+    <a href="https://wa.me/16144360164" class="whatsapp-float" target="_blank">💬</a>
+
+    <script src="script.js"></script>
+</body>
+</html>

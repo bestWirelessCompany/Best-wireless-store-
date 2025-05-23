@@ -1,68 +1,86 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --card-color: #f9f9f9;
+  --accent-color: #e50914;
+}
+
+body.dark-mode {
+  --bg-color: #121212;
+  --text-color: #f1f1f1;
+  --card-color: #1e1e1e;
+  --accent-color: #e50914;
+}
 
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f7f7f7;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: all 0.3s ease;
 }
-header {
-    background: #fff;
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #ccc;
+
+.toggle-dark {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: var(--accent-color);
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 1000;
 }
-.logo {
-    height: 50px;
+
+.filter-bar {
+  text-align: center;
+  padding: 10px;
+  margin-top: 60px;
 }
-nav a {
-    margin-left: 20px;
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
+
+.filter-bar select {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
-.store {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    padding: 2rem;
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  padding: 20px;
 }
-.item {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-    text-align: center;
-    width: 200px;
+
+.product {
+  background-color: var(--card-color);
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
 }
-.item img {
-    width: 100px;
+
+.product:hover {
+  transform: translateY(-5px);
 }
-form {
-    max-width: 500px;
-    margin: 2rem auto;
-    background: white;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+.product img {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 10px;
 }
-input {
-    width: 100%;
-    margin: 0.5rem 0;
-    padding: 0.5rem;
+
+.product h3 {
+  margin: 10px 0 5px;
+  font-size: 1.2rem;
+  color: var(--text-color);
 }
-.whatsapp-float {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #25D366;
-    color: white;
-    font-size: 24px;
-    padding: 10px 15px;
-    border-radius: 50%;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    text-decoration: none;
+
+.product p {
+  margin: 0;
+  font-size: 1rem;
+  color: #777;
 }

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,158 +6,187 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Best Wireless Company</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
       margin: 0;
-      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
     }
     header {
-      background: white;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      border-bottom: 1px solid #ccc;
-    }
-    header h1 {
-      font-size: 20px;
-      margin: 0;
-    }
-    nav {
-      margin-top: 10px;
-    }
-    nav a {
-      margin: 0 8px;
-      text-decoration: none;
-      font-weight: bold;
-      color: #333;
-      font-size: 14px;
-    }
-    .container {
-      padding: 10px;
-    }
-    .product, .order-form {
-      background: white;
-      border-radius: 10px;
-      padding: 15px;
-      margin-bottom: 20px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      background: black;
+      color: white;
+      padding: 20px;
       text-align: center;
     }
+    header h1 {
+      margin: 0;
+      color: #e60000;
+    }
+    .currency-switcher, .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px;
+    }
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px;
+    }
+    .product {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      width: 250px;
+      text-align: center;
+      padding: 15px;
+    }
     .product img {
-      width: 100%;
-      max-width: 250px;
-      height: auto;
+      max-width: 100%;
       border-radius: 10px;
     }
-    .product h2, .order-form h2 {
-      font-size: 18px;
-      margin: 10px 0;
-    }
-    .product p {
-      font-size: 16px;
-      color: #555;
-    }
-    .buy-button, .whatsapp-button {
-      display: inline-block;
-      background: black;
-      color: white;
-      padding: 10px 15px;
-      border-radius: 5px;
-      text-decoration: none;
-      margin-top: 10px;
-      font-size: 14px;
-    }
-    form input, form select, form textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    form button {
-      background: black;
+    .product button {
+      background: #e60000;
       color: white;
       padding: 10px;
       margin-top: 10px;
-      width: 100%;
       border: none;
       border-radius: 5px;
-      font-size: 16px;
+      cursor: pointer;
+    }
+    section {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #e60000;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    form button {
+      background: #e60000;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #222;
+      color: white;
     }
   </style>
 </head>
 <body>
-
 <header>
-  <h1>Best Wireless</h1>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#products">Products</a>
-    <a href="#order">Order</a>
-  </nav>
+  <h1>Best Wireless Company</h1>
+  <p>Affordable iPhones. Trusted Service. Global Delivery.</p>
 </header>
 
-<div class="container" id="products">
-
-  <div class="product">
-    <img src="https://cdn.openai.com/chat-plugins/files/23d86246-881d-336b-021d-4d6c71b3cf66/A_digital_photograph_displays_an_iPhone_11_standin.png" alt="iPhone 11" />
-    <h2>iPhone 11</h2>
-    <p>INR 45,000 / USD 540</p>
-    <a class="buy-button" href="#order">Buy Now</a>
-  </div>
-
-  <div class="product">
-    <img src="https://cdn.openai.com/chat-plugins/files/5ef9d79c-b859-4e7d-b23f-dbf92787b735/A_digital_photograph_displays_an_iPhone_13_on_a_wo.png" alt="iPhone 13" />
-    <h2>iPhone 13</h2>
-    <p>INR 55,000 / USD 660</p>
-    <a class="buy-button" href="#order">Buy Now</a>
-  </div>
-
-  <div class="product">
-    <img src="https://cdn.openai.com/chat-plugins/files/c2cfe6d1-2e2d-4c4f-a1df-1bc8f5393fd7/A_digital_photograph_displays_an_iPhone_15_Pro_on.png" alt="iPhone 15 Pro" />
-    <h2>iPhone 15 Pro</h2>
-    <p>INR 115,000 / USD 1390</p>
-    <a class="buy-button" href="#order">Buy Now</a>
-  </div>
-
-  <div class="product">
-    <img src="https://cdn.openai.com/chat-plugins/files/28b461f4-b580-ea01-814f-80e6df289cdc/A_grid_of_four_digital_product_images_on_a_white_b.png" alt="iPhone 16 Pro Max" />
-    <h2>iPhone 16 Pro Max</h2>
-    <p>INR 125,000 / USD 1490</p>
-    <a class="buy-button" href="#order">Buy Now</a>
-  </div>
-
-  <div class="product">
-    <a class="whatsapp-button" href="https://wa.me/16144360165" target="_blank">Chat on WhatsApp for Payment</a>
-  </div>
-
-  <div class="order-form" id="order">
-    <h2>Place Your Order</h2>
-    <form action="mailto:taiwo.samuel.123890@gmail.com" method="POST" enctype="text/plain">
-      <input type="text" name="Name" placeholder="Your Name" required />
-      <input type="email" name="Email" placeholder="Your Email" required />
-      <select name="iPhone Model" required>
-        <option value="">Select iPhone Model</option>
-        <option value="iPhone 11">iPhone 11</option>
-        <option value="iPhone 13">iPhone 13</option>
-        <option value="iPhone 15 Pro">iPhone 15 Pro</option>
-        <option value="iPhone 16 Pro Max">iPhone 16 Pro Max</option>
-      </select>
-      <textarea name="Message" rows="5" placeholder="Delivery instructions or questions"></textarea>
-      <button type="submit">Submit Order</button>
-    </form> 
-
-  </div>
-
-}
-
+<div class="currency-switcher">
+  <label><input type="radio" name="currency" value="USD" checked> USD</label>
+  <label><input type="radio" name="currency" value="INR"> INR</label>
 </div>
 
+<div class="filter-bar">
+  <select id="modelFilter" onchange="filterProducts()">
+    <option value="all">All Models</option>
+    <option value="11">iPhone 11</option>
+    <option value="12">iPhone 12</option>
+    <option value="13">iPhone 13</option>
+    <option value="14">iPhone 14</option>
+    <option value="15">iPhone 15</option>
+    <option value="16">iPhone 16</option>
+  </select>
+</div>
+
+<div class="product-grid" id="productGrid">
+  <!-- Products will be injected here -->
+</div>
+
+<section>
+  <h2>Order Form</h2>
+  <form onsubmit="handleSubmit(event)">
+    <input type="text" placeholder="Your Name" required />
+    <input type="text" placeholder="Your Address" required />
+    <input type="tel" placeholder="Your Phone" required />
+    <textarea placeholder="Order Details" required></textarea>
+    <button type="submit">Submit Order</button>
+  </form>
+</section>
+
+<section>
+  <h2>Testimonials</h2>
+  <p>"Fast delivery and good prices!" – Priya from Delhi</p>
+  <p>"Customer support was excellent. Highly recommend!" – James from New York</p>
+</section>
+
+<section>
+  <h2>FAQs</h2>
+  <p><strong>Q:</strong> Do you ship internationally?<br/><strong>A:</strong> Yes, we deliver worldwide.</p>
+  <p><strong>Q:</strong> How do I pay?<br/><strong>A:</strong> After submitting your order, you will be contacted on WhatsApp for account details.</p>
+</section>
+
+<footer>
+  Contact us on WhatsApp: +1 614 436 0165
+</footer>
+
+<script>
+  const products = [
+    { model: "11", name: "iPhone 11", priceUSD: 299, img: "https://raw.githubusercontent.com/taiwo-samuel/bestwireless/main/iphone11.png" },
+    { model: "12", name: "iPhone 12", priceUSD: 399, img: "https://raw.githubusercontent.com/taiwo-samuel/bestwireless/main/iphone12.png" },
+    { model: "13", name: "iPhone 13", priceUSD: 499, img: "https://raw.githubusercontent.com/taiwo-samuel/bestwireless/main/iphone13.png" },
+    { model: "16", name: "iPhone 16 Pro Max", priceUSD: 1099, img: "https://raw.githubusercontent.com/taiwo-samuel/bestwireless/main/iphone16.png" },
+  ];
+
+  const exchangeRate = 83;
+
+  function renderProducts() {
+    const currency = document.querySelector('input[name="currency"]:checked').value;
+    const filter = document.getElementById("modelFilter").value;
+    const container = document.getElementById("productGrid");
+    container.innerHTML = "";
+
+    products
+      .filter(p => filter === "all" || p.model === filter)
+      .forEach(p => {
+        const price = currency === "USD" ? `$${p.priceUSD}` : `₹${p.priceUSD * exchangeRate}`;
+        container.innerHTML += `
+          <div class="product">
+            <img src="${p.img}" alt="${p.name}">
+            <h3>${p.name}</h3>
+            <p>${price}</p>
+            <button onclick="startOrder('${p.name}', '${price}')">Buy Now</button>
+          </div>
+        `;
+      });
+  }
+
+  function startOrder(model, price) {
+    const form = document.querySelector("form textarea");
+    form.value = `I want to order: ${model} - ${price}`;
+    window.scrollTo({ top: document.querySelector("form").offsetTop, behavior: "smooth" });
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    alert("Your order is being submitted. You will now be redirected.");
+    window.location.href = "thankyou.html";
+  }
+
+  document.querySelectorAll('input[name="currency"]').forEach(el => el.addEventListener("change", renderProducts));
+  window.filterProducts = renderProducts;
+
+  renderProducts();
+</script>
 </body>
 </html>

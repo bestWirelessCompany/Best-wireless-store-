@@ -142,10 +142,20 @@
     });
   });
 
-  function openForm(model) {
-    document.getElementById('orderForm').style.display = 'block';
-    document.getElementById('modelInput').value = model;
-    window.scrollTo(0, document.body.scrollHeight);
+  <button class="toggle-dark" onclick="toggleDarkMode()">Dark Mode</button>
+
+<div class="filter-bar">
+  <label for="modelFilter">Filter by model: </label>
+  <select id="modelFilter" onchange="filterProducts()">
+    <option value="all">All</option>
+    <option value="iPhone 11">iPhone 11</option>
+    <option value="iPhone 12">iPhone 12</option>
+    <option value="iPhone 14">iPhone 14</option>
+    <option value="iPhone 15">iPhone 15</option>
+    <option value="iPhone 16">iPhone 16</option>
+  </select>
+</div>
+
   }
 </script>
 

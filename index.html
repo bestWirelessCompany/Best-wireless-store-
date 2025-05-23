@@ -2,179 +2,248 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Best Wireless Company</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>iPhone Store</title>
   <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+      --card-color: #f9f9f9;
+      --accent-color: #e50914;
+    }
+
+    body.dark-mode {
+      --bg-color: #121212;
+      --text-color: #f1f1f1;
+      --card-color: #1e1e1e;
+    }
+
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background: #f7f7f7;
+      font-family: Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: all 0.3s ease;
     }
-    header {
-      background: black;
-      color: white;
-      padding: 1rem;
+
+    .toggle-dark {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: var(--accent-color);
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    .filter-bar {
       text-align: center;
+      padding: 10px;
+      margin-top: 60px;
     }
-    .controls {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      padding: 1rem;
+
+    .filter-bar select {
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
     }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
     .product {
-      background: white;
+      background-color: var(--card-color);
+      border: 1px solid #ddd;
       border-radius: 12px;
-      padding: 1rem;
-      margin: 1rem auto;
-      width: 90%;
-      max-width: 400px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 15px;
       text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s ease;
     }
+
+    .product:hover {
+      transform: translateY(-5px);
+    }
+
     .product img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
+      width: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+      margin-bottom: 10px;
     }
+
     .product h3 {
       margin: 10px 0 5px;
+      font-size: 1.2rem;
+      color: var(--text-color);
     }
-    .product button {
-      background: red;
-      color: white;
-      border: none;
-      padding: 10px 20px;
+
+    .product p {
+      margin: 0;
+      font-size: 1rem;
+      color: #777;
+    }
+
+    .order-form {
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: var(--card-color);
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .order-form h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .order-form label {
+      display: block;
+      margin-bottom: 5px;
       font-weight: bold;
-      border-radius: 8px;
-      margin-top: 10px;
     }
-    form {
-      display: none;
-      padding: 1rem;
-      background: #fff;
-      margin: 1rem;
-      border-radius: 8px;
+
+    .order-form input,
+    .order-form select,
+    .order-form textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .order-form button {
+      width: 100%;
+      padding: 10px;
+      background-color: var(--accent-color);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .order-form button:hover {
+      background-color: #c40812;
     }
   </style>
 </head>
 <body>
+  <button class="toggle-dark" onclick="toggleDarkMode()">Toggle Dark Mode</button>
 
-<header>
-  <h1>Affordable iPhones. Trusted Service. Global Delivery.</h1>
-</header>
-
-<div class="controls">
-  <label><input type="radio" name="currency" value="USD" /> USD</label>
-  <label><input type="radio" name="currency" value="INR" checked /> INR</label>
-  <select id="modelFilter">
-    <option value="all">All Models</option>
-    <option value="iPhone 11">iPhone 11</option>
-    <option value="iPhone 12">iPhone 12</option>
-    <option value="iPhone 13">iPhone 13</option>
-    <option value="iPhone 14">iPhone 14</option>
-  </select>
-</div>
-
-<div class="products">
-  <div class="product" data-model="iPhone 11">
-    <img src="images/iphone11.png" alt="iPhone 11" />
-    <h3>iPhone 11</h3>
-    <p class="price" data-usd="299" data-inr="24817">₹24817</p>
-    <button onclick="openForm('iPhone 11')">Buy Now</button>
+  <div class="filter-bar">
+    <label for="modelFilter">Filter by model: </label>
+    <select id="modelFilter" onchange="filterProducts()">
+      <option value="all">All</option>
+      <option value="iPhone 11">iPhone 11</option>
+      <option value="iPhone 12">iPhone 12</option>
+      <option value="iPhone 13">iPhone 13</option>
+      <option value="iPhone 14">iPhone 14</option>
+      <option value="iPhone 15">iPhone 15</option>
+    </select>
   </div>
 
-  <div class="product" data-model="iPhone 12">
-    <img src="images/iphone12.png" alt="iPhone 12" />
-    <h3>iPhone 12</h3>
-    <p class="price" data-usd="399" data-inr="33117">₹33117</p>
-    <button onclick="openForm('iPhone 12')">Buy Now</button>
+  <div class="product-grid" id="productGrid">
+    <div class="product" data-model="iPhone 15">
+      <img src="images/iphone_15_pink.jpg" alt="iPhone 15 Pink">
+      <h3>iPhone 15 - Pink</h3>
+      <p><strong>Price:</strong> <span class="price" data-usd="799" data-inr="66500">$799</span></p>
+    </div>
+
+    <div class="product" data-model="iPhone 14">
+      <img src="images/iphone_14_purple.png" alt="iPhone 14 Purple">
+      <h3>iPhone 14 - Purple</h3>
+      <p><strong>Price:</strong> <span class="price" data-usd="699" data-inr="58000">$699</span></p>
+    </div>
+
+    <div class="product" data-model="iPhone 13">
+      <img src="images/iphone_13_green.jpg" alt="iPhone 13 Green">
+      <h3>iPhone 13 - Green</h3>
+      <p><strong>Price:</strong> <span class="price" data-usd="599" data-inr="49500">$599</span></p>
+    </div>
+
+    <div class="product" data-model="iPhone 12">
+      <img src="images/iphone_12_blue.jpg" alt="iPhone 12 Blue">
+      <h3>iPhone 12 - Blue</h3>
+      <p><strong>Price:</strong> <span class="price" data-usd="499" data-inr="41000">$499</span></p>
+    </div>
+
+    <div class="product" data-model="iPhone 11">
+      <img src="images/iphone_11_purple.png" alt="iPhone 11 Purple">
+      <h3>iPhone 11 - Purple</h3>
+      <p><strong>Price:</strong> <span class="price" data-usd="399" data-inr="33000">$399</span></p>
+    </div>
   </div>
 
-  <div class="product" data-model="iPhone 13">
-    <img src="images/iphone13.png" alt="iPhone 13" />
-    <h3>iPhone 13</h3>
-    <p class="price" data-usd="499" data-inr="41417">₹41417</p>
-    <button onclick="openForm('iPhone 13')">Buy Now</button>
+  <div class="order-form">
+    <h2>Place Your Order</h2>
+    <form id="orderForm">
+      <label for="customerName">Name:</label>
+      <input type="text" id="customerName" name="customerName" required>
+
+      <label for="customerPhone">Phone Number:</label>
+      <input type="tel" id="customerPhone" name="customerPhone" required>
+
+      <label for="productModel">Select Model:</label>
+      <select id="productModel" name="productModel" required>
+        <option value="">--Select Model--</option>
+        <option value="iPhone 11">iPhone 11</option>
+        <option value="iPhone 12">iPhone 12</option>
+        <option value="iPhone 13">iPhone 13</option>
+        <option value="iPhone 14">iPhone 14</option>
+        <option value="iPhone 15">iPhone 15</option>
+      </select>
+
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" name="quantity" min="1" required>
+
+      <label for="address">Delivery Address:</label>
+      <textarea id="address" name="address" rows="3" required></textarea>
+
+      <button type="submit">Submit Order</button>
+    </form>
   </div>
 
-  <div class="product" data-model="iPhone 14">
-    <img src="images/iphone14.png" alt="iPhone 14" />
-    <h3>iPhone 14</h3>
-    <p class="price" data-usd="599" data-inr="49717">₹49717</p>
-    <button onclick="openForm('iPhone 14')">Buy Now</button>
-  </div>
-</div>
-
-<form id="orderForm" action="https://formsubmit.co/taiwo.samuel.123890@gmail.com" method="POST">
-  <h3>Order iPhone</h3>
-  <input type="hidden" name="_next" value="thankyou.html" />
-  <input type="text" name="name" placeholder="Your Name" required /><br /><br />
-  <input type="email" name="email" placeholder="Your Email" required /><br /><br />
-  <input type="text" name="address" placeholder="Delivery Address" required /><br /><br />
-  <input type="text" name="model" id="modelInput" readonly /><br /><br />
-  <button type="submit">Confirm Order</button>
-  <p>After submitting, pay via WhatsApp: <a href="https://wa.me/16144360165" target="_blank">+1 614 436 0165</a></p>
-</form>
-
-<script>
-  const radios = document.querySelectorAll('input[name="currency"]');
-  const prices = document.querySelectorAll('.price');
-  radios.forEach(radio => {
-    radio.addEventListener('change', () => {
-      const currency = radio.value;
-      prices.forEach(price => {
-        price.textContent = currency === 'USD'
-          ? `$${price.dataset.usd}`
-          : `₹${price.dataset.inr}`;
-      });
-    });
-  });
-
-  document.getElementById('modelFilter').addEventListener('change', function () {
-    const selected = this.value;
-    document.querySelectorAll('.product').forEach(card => {
-      card.style.display = (selected === 'all' || card.dataset.model === selected)
-        ? 'block' : 'none';
-    });
-  });
-
-  <button class="toggle-dark" onclick="toggleDarkMode()">Dark Mode</button>
-
-<div class="filter-bar">
-  <label for="modelFilter">Filter by model: </label>
-  <select id="modelFilter" onchange="filterProducts()">
-    <option value="all">All</option>
-    <option value="iPhone 11">iPhone 11</option>
-    <option value="iPhone 12">iPhone 12</option>
-    <option value="iPhone 14">iPhone 14</option>
-    <option value="iPhone 15">iPhone 15</option>
-    <option value="iPhone 16">iPhone 16</option>
-  </select>
-</div>
-
-  }
-</script>
   <script>
-function toggleDarkMode() {
-  document.body.classList.toggle('dark-mode');
-}
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
 
-function filterProducts() {
-  const value = document.getElementById('modelFilter').value.toLowerCase();
-  const products = document.querySelectorAll('.product');
+    function filterProducts() {
+      const value = document.getElementById('modelFilter').value.toLowerCase();
+      const products = document.querySelectorAll('.product');
 
-  products.forEach(product => {
-    const title = product.querySelector('h3').textContent.toLowerCase();
-    product.style.display = value === 'all' || title.includes(value) ? 'block' : 'none';
-  });
-}
-</script>
+      products.forEach(product => {
+        const model = product.getAttribute('data-model').toLowerCase();
+        product.style.display = value === 'all' || model.includes(value) ? 'block' : 'none';
+      });
+    }
 
-</script>
+    document.getElementById('orderForm').addEventListener('submit', function(e) {
+      e.preventDefault();
 
+      const name = document.getElementById('customerName').value;
+      const phone = document.getElementById('customerPhone').value;
+      const model = document.getElementById('productModel').value;
+      const quantity = document.getElementById('quantity').value;
+      const address = document.getElementById('address').value;
+
+      const message = `Hello, I would like to place an order:\n\nName: ${name}\nPhone: ${phone}\nModel: ${model}\nQuantity: ${quantity}\nAddress: ${address}`;
+
+      const whatsappNumber = '16144360165'; // Replace with your WhatsApp number
+      const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+      window.location.href = whatsappLink;
+    });
+  </script>
 </body>
 </html>
